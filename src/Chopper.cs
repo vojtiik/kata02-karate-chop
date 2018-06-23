@@ -7,8 +7,8 @@ public class BinaryChop : IChopper
     {
         var segment = new ArraySegment<int>(array_of_int, indexStart, indexto).ToArray();
 
-        int length = segment.Length;
-        var middleIndex = length / 2;
+        int segmentLength = segment.Length;
+        var middleIndex = segmentLength / 2;
         int valueInTheMiddle = segment[middleIndex];
         if (valueInTheMiddle == numberToFind)
         {
@@ -16,7 +16,7 @@ public class BinaryChop : IChopper
             return indexStart + middleIndex;
         }
 
-        if (length == 1)
+        if (segmentLength == 1)
         {
             Console.WriteLine("not found: " + numberToFind);
             return -1;
@@ -24,12 +24,12 @@ public class BinaryChop : IChopper
 
         if (numberToFind < valueInTheMiddle)
         {
-            var index = ChopSlice(numberToFind, array_of_int, indexStart, middleIndex);
+            var index = ChopSlice(numberToFind, array_of_int, indexStart, segmentLength - middleIndex);
             return index;
         }
         else
         {
-            var index = ChopSlice(numberToFind, array_of_int, indexStart + middleIndex, middleIndex);
+            var index = ChopSlice(numberToFind, array_of_int, indexStart + middleIndex, segmentLength - middleIndex);
             return index;
         }
     }

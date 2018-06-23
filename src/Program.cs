@@ -41,6 +41,7 @@ namespace take_1
             }
 
             assert_equal(734, chopper.Chop(734, loong.ToArray()));
+            assert_equal(124, chopper.Chop(124, loong.ToArray()));
             assert_equal(-1, chopper.Chop(1001, loong.ToArray()));
 
             loong.Remove(734);
